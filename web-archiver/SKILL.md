@@ -1,19 +1,19 @@
 ---
-name: web-scraping
+name: web-archiver
 description: >
-  Crawl websites and save pages as Markdown files. Use this skill when the user
-  wants to scrape, crawl, or collect content from websites, documentation sites,
+  Crawl and archive websites as Markdown files. Use this skill when the user
+  wants to crawl, scrape, or archive content from websites, documentation sites,
   or web pages for analysis, archival, or knowledge base creation — even if they
-  don't explicitly mention "crawl" or "scrape."
+  don't explicitly mention "crawl", "scrape", or "archive."
 ---
 
-# Web Scraping with crawl4ai
+# Web Archiver
 
-Crawl websites and extract content as Markdown files using the bundled script.
+Crawl websites and save pages as Markdown files.
 
 ## When to use this skill
 
-- Scraping documentation sites for offline reading
+- Archiving documentation sites for offline reading
 - Collecting web content for analysis or RAG pipelines
 - Archiving website content as Markdown
 - Extracting text from multiple pages of a website
@@ -27,14 +27,14 @@ Crawl websites and extract content as Markdown files using the bundled script.
 
 Confirm the script location before executing the command:
 
-1. Check if `./scripts/scraping.py` exists
-2. If not found, search for a `web-scraping` folder and check if `./scripts/scraping.py` exists within it
+1. Check if `./scripts/archiver.py` exists
+2. If not found, search for a `web-archiver` folder and check if `./scripts/archiver.py` exists within it
 3. Run the command using the discovered path
 
 ## How to run
 
 ```bash
-uv run ./scripts/scraping.py --target <URL> --output <DIR>
+uv run ./scripts/archiver.py --target <URL> --output <DIR>
 ```
 
 If the script fails with a Playwright-related error, install the browser binary:
@@ -43,7 +43,7 @@ If the script fails with a Playwright-related error, install the browser binary:
 uv run --with crawl4ai -- playwright install chromium
 ```
 
-Then retry the scraping command. The browser binary is cached globally in `~/.cache/ms-playwright/`.
+Then retry the archiving command. The browser binary is cached globally in `~/.cache/ms-playwright/`.
 
 ### Required arguments
 
@@ -89,25 +89,25 @@ output_dir/
 ### Crawl a documentation site
 
 ```bash
-uv run ${skillDirectory}/scripts/scraping.py -t https://docs.example.com -o ./scraped
+uv run ${skillDirectory}/scripts/archiver.py -t https://docs.example.com -o ./archived
 ```
 
 ### Limit scope for large sites
 
 ```bash
-uv run ${skillDirectory}/scripts/scraping.py -t https://wiki.example.com -o ./scraped -m 50 -d 2
+uv run ${skillDirectory}/scripts/archiver.py -t https://wiki.example.com -o ./archived -m 50 -d 2
 ```
 
 ### Deep crawl with verbose output
 
 ```bash
-uv run ${skillDirectory}/scripts/scraping.py -t https://blog.example.com -o ./scraped -d 5 -v
+uv run ${skillDirectory}/scripts/archiver.py -t https://blog.example.com -o ./archived -d 5 -v
 ```
 
 ### Debug with JSON output
 
 ```bash
-uv run ${skillDirectory}/scripts/scraping.py -t https://example.com -o ./scraped --json -v
+uv run ${skillDirectory}/scripts/archiver.py -t https://example.com -o ./archived --json -v
 ```
 
 ## Notes
@@ -115,5 +115,5 @@ uv run ${skillDirectory}/scripts/scraping.py -t https://example.com -o ./scraped
 - Binary files (images, PDFs, videos, etc.) are automatically excluded
 - Navigation, header, and footer elements are stripped
 - Duplicate content across pages is automatically skipped
-- Dependencies (crawl4ai) are auto-resolved via uv on first run
+- Dependencies are auto-resolved via uv on first run
 

@@ -6,7 +6,7 @@
 # ]
 # ///
 """
-Web scraping script using crawl4ai library.
+Web archiver script.
 Crawls a website and saves each page as a separate markdown file.
 """
 
