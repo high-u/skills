@@ -1,10 +1,10 @@
 ---
 name: web-archiver
 description: >
-  Crawl and archive websites as Markdown files. Use this skill when the user
-  wants to crawl, scrape, or archive content from websites, documentation sites,
-  or web pages for analysis, archival, or knowledge base creation — even if they
-  don't explicitly mention "crawl", "scrape", or "archive."
+  Crawl and save websites as Markdown files. Use this skill when the user
+  wants to save, download, archive, or crawl content from websites, documentation
+  sites, or web pages for offline reading, analysis, or knowledge base creation —
+  even if they don't explicitly mention "crawl", "scrape", "archive", or "save".
 ---
 
 # Web Archiver
@@ -21,29 +21,20 @@ Crawl websites and save pages as Markdown files.
 ## Requirements
 
 - [uv](https://docs.astral.sh/uv/) must be installed
-- Dependencies are resolved automatically on first run
-
-## Before running
-
-Confirm the script location before executing the command:
-
-1. Check if `./scripts/archiver.py` exists
-2. If not found, search for a `web-archiver` folder and check if `./scripts/archiver.py` exists within it
-3. Run the command using the discovered path
 
 ## How to run
 
 ```bash
-uv run ./scripts/archiver.py --target <URL> --output <DIR>
+web-archiver --target <URL> --output <DIR>
 ```
 
-If the script fails with a Playwright-related error, install the browser binary:
+If the `web-archiver` command is not found, install it:
 
 ```bash
-uv run --with crawl4ai -- playwright install chromium
+uv tool install --from git+https://github.com/high-u/skills.git#subdirectory=web-archiver-command web-archiver && playwright install chromium
 ```
 
-Then retry the archiving command. The browser binary is cached globally in `~/.cache/ms-playwright/`.
+The browser binary is cached globally in `~/.cache/ms-playwright/`.
 
 ### Required arguments
 
@@ -89,25 +80,25 @@ output_dir/
 ### Crawl a documentation site
 
 ```bash
-uv run ${skillDirectory}/scripts/archiver.py -t https://docs.example.com -o ./archived
+web-archiver -t https://docs.example.com -o ./archived
 ```
 
 ### Limit scope for large sites
 
 ```bash
-uv run ${skillDirectory}/scripts/archiver.py -t https://wiki.example.com -o ./archived -m 50 -d 2
+web-archiver -t https://wiki.example.com -o ./archived -m 50 -d 2
 ```
 
 ### Deep crawl with verbose output
 
 ```bash
-uv run ${skillDirectory}/scripts/archiver.py -t https://blog.example.com -o ./archived -d 5 -v
+web-archiver -t https://blog.example.com -o ./archived -d 5 -v
 ```
 
 ### Debug with JSON output
 
 ```bash
-uv run ${skillDirectory}/scripts/archiver.py -t https://example.com -o ./archived --json -v
+web-archiver -t https://example.com -o ./archived --json -v
 ```
 
 ## Notes
@@ -115,5 +106,3 @@ uv run ${skillDirectory}/scripts/archiver.py -t https://example.com -o ./archive
 - Binary files (images, PDFs, videos, etc.) are automatically excluded
 - Navigation, header, and footer elements are stripped
 - Duplicate content across pages is automatically skipped
-- Dependencies are auto-resolved via uv on first run
-

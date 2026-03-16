@@ -1,0 +1,15 @@
+[project]
+name = "web-archiver"
+version = "0.1.0"
+description = "Crawl websites and save pages as Markdown files"
+requires-python = ">=3.11"
+dependencies = [
+    "crawl4ai",
+]
+
+[project.scripts]
+web-archiver = "archiver:main"
+
+[build-system]
+requires = ["hatchling"]
+build-backend = "hatchling.build"
