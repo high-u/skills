@@ -31,7 +31,8 @@ web_archiver --target <URL> --output <DIR>
 ### If the `web_archiver` command fails
 
 ```bash
-uv tool install --from git+https://github.com/high-u/skills.git#subdirectory=web-archiver-command web_archiver && playwright install chromium
+uv tool install --from git+https://github.com/high-u/skills.git#subdirectory=web-archiver-command web_archiver
+uv tool install playwright && playwright install chromium
 ```
 
 The browser binary is cached globally in `~/.cache/ms-playwright/`.
