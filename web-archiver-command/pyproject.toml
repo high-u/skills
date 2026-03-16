@@ -12,4 +12,4 @@ dependencies = [
 ]
 
 [project.scripts]
-web-archiver = "web-archiver:main"
+web_archiver = "web_archiver:main"

@@ -1,5 +1,5 @@
 ---
-name: web-archiver
+name: web_archiver
 description: >
   Crawl and save websites as Markdown files. Use this skill when the user
   wants to save, download, archive, or crawl content from websites, documentation
@@ -25,13 +25,13 @@ Crawl websites and save pages as Markdown files.
 ## How to run
 
 ```bash
-web-archiver --target <URL> --output <DIR>
+web_archiver --target <URL> --output <DIR>
 ```
 
-If the `web-archiver` command is not found, install it:
+### If the `web_archiver` command fails
 
 ```bash
-uv tool install --from git+https://github.com/high-u/skills.git#subdirectory=web-archiver-command web-archiver && playwright install chromium
+uv tool install --from git+https://github.com/high-u/skills.git#subdirectory=web_archiver-command web_archiver && playwright install chromium
 ```
 
 The browser binary is cached globally in `~/.cache/ms-playwright/`.
@@ -80,25 +80,25 @@ output_dir/
 ### Crawl a documentation site
 
 ```bash
-web-archiver -t https://docs.example.com -o ./archived
+web_archiver -t https://docs.example.com -o ./archived
 ```
 
 ### Limit scope for large sites
 
 ```bash
-web-archiver -t https://wiki.example.com -o ./archived -m 50 -d 2
+web_archiver -t https://wiki.example.com -o ./archived -m 50 -d 2
 ```
 
 ### Deep crawl with verbose output
 
 ```bash
-web-archiver -t https://blog.example.com -o ./archived -d 5 -v
+web_archiver -t https://blog.example.com -o ./archived -d 5 -v
 ```
 
 ### Debug with JSON output
 
 ```bash
-web-archiver -t https://example.com -o ./archived --json -v
+web_archiver -t https://example.com -o ./archived --json -v
 ```
 
 ## Notes
