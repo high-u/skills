@@ -1,3 +1,7 @@
+[build-system]
+requires = ["flit-core"]
+build-backend = "flit_core.buildapi"
+
 [project]
 name = "web-archiver"
 version = "0.1.0"
@@ -8,8 +12,4 @@ dependencies = [
 ]
 
 [project.scripts]
-web-archiver = "archiver:main"
-
-[build-system]
-requires = ["hatchling"]
-build-backend = "hatchling.build"
+web-archiver = "web-archiver:main"
